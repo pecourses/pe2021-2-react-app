@@ -1,5 +1,5 @@
-import LoginForm from './components/LoginForm';
+import Calendar from './components/Calendar';
 
-const App = () => <LoginForm />;
+const App = () => <Calendar />;
 
 export default App;
