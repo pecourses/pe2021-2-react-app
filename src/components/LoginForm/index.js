@@ -2,6 +2,9 @@ import classNames from 'classnames';
 import React, { Component } from 'react';
 import styles from './LoginForm.module.css';
 
+const INITIAL_VALUES = { email: '', password: '' };
+const EMAIL_REG_EXPR = /^\S{5,60}$/;
+
 class LoginForm extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +28,7 @@ class LoginForm extends Component {
   handleEmailChange = ({ target: { value } }) => {
     this.setState({
       email: value,
-      isEmailValid: /^\S{5,60}$/.test(value),
+      isEmailValid: EMAIL_REG_EXPR.test(value),
     });
   };
 
@@ -39,6 +42,7 @@ class LoginForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.setState(INITIAL_VALUES);
   };
 
   // добавить поле для пароля
@@ -51,8 +55,6 @@ class LoginForm extends Component {
       [styles.inputValid]: isEmailValid,
       [styles.inputInvalid]: !isEmailValid,
     });
-
-    console.log('emailClassNames', emailClassNames);
 
     return (
       <form className={styles.formContainer} onSubmit={this.handleSubmit}>
