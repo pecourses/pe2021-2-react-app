@@ -6,7 +6,7 @@
 
 import styles from './ThemeButton.module.css';
 
-function ThemeButton(props) {
+function ThemeButton (props) {
   const { isLightTheme } = props;
   // Инлайн стили - в объекте
   // имена свойств - в camelCase
@@ -21,7 +21,7 @@ function ThemeButton(props) {
   };
   // className="class1 class2 class3"
   return (
-    <button type="button" style={inlineStyles} className={styles.button}>
+    <button type='button' style={inlineStyles} className={styles.button}>
       {isLightTheme ? 'Light' : 'Dark'}
     </button>
   );

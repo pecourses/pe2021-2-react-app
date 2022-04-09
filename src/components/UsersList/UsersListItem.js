@@ -1,6 +1,6 @@
 import DeleteOutlineIcon from 'mdi-react/DeleteOutlineIcon';
 
-function UsersListItem(props) {
+function UsersListItem (props) {
   const {
     user: { id, firstName, lastName, isSelected },
     selectUser,

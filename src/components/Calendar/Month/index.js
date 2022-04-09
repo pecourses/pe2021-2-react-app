@@ -4,7 +4,7 @@ const WEEK_DAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
 const getWeekDays = () => WEEK_DAYS.map(d => <th>{d}</th>);
 
-function Month() {
+function Month () {
   return (
     <section>
       <table>

@@ -2,7 +2,7 @@ import styles from './Greeting.module.css';
 
 // выражения JS в JSX в {}
 // Функциональный
-function Greeting(props) {
+function Greeting (props) {
   const { name, isGreeting } = props; //{name:'Masha'};
 
   return (

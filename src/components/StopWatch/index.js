@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class StopWatch extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -12,11 +12,11 @@ class StopWatch extends Component {
     console.log('const');
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.start();
   }
-  componentDidUpdate() {}
-  componentWillUnmount() {
+  componentDidUpdate () {}
+  componentWillUnmount () {
     this.stop();
   }
 
@@ -42,7 +42,7 @@ class StopWatch extends Component {
     this.setState({ count: new Date(0, 0, 0, 0, 0, 0, 0) });
   };
 
-  render() {
+  render () {
     const { count } = this.state;
 
     return (

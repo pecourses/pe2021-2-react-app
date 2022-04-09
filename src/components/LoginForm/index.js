@@ -6,7 +6,7 @@ const INITIAL_VALUES = { email: '', password: '' };
 const EMAIL_REG_EXPR = /^\S{5,60}$/;
 
 class LoginForm extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     /* реакт-компонент берет на себя ответственость
@@ -46,7 +46,7 @@ class LoginForm extends Component {
   };
 
   // добавить поле для пароля
-  render() {
+  render () {
     const { email, password, isEmailValid } = this.state;
     // const emailClassNames = `${styles.input} ${
     //   isEmailValid ? styles.inputValid : styles.inputInvalid
@@ -64,9 +64,9 @@ class LoginForm extends Component {
             className={emailClassNames}
             value={email}
             onChange={this.handleEmailChange}
-            type="email"
-            name="email"
-            placeholder="email"
+            type='email'
+            name='email'
+            placeholder='email'
             autoFocus
           />
         </label>
@@ -76,12 +76,12 @@ class LoginForm extends Component {
             className={styles.input}
             value={password}
             onChange={this.handlePasswordChange}
-            type="password"
-            name="password"
-            placeholder="password"
+            type='password'
+            name='password'
+            placeholder='password'
           />
         </label>
-        <button type="submit">Login</button>
+        <button type='submit'>Login</button>
       </form>
     );
   }

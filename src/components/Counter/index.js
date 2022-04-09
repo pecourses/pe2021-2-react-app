@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
   //rconst
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -26,7 +26,7 @@ class Counter extends Component {
   };
 
   // Написать обработчик на кнопку -
-  render() {
+  render () {
     const { count } = this.state;
     const { step } = this.props;
     return (

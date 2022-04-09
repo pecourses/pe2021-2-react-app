@@ -4,7 +4,7 @@ import React from 'react';
 
 const WEEK_DAYS = ['SANDAY', 'M...', 'T', 'W', 'T', 'F', 'S'];
 
-function CurrentDay({ currentDate }) {
+function CurrentDay ({ currentDate }) {
   return (
     <section>
       <div>{WEEK_DAYS[getDay(currentDate)]}</div>

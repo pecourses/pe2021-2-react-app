@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SelectedUsersList(props) {
+function SelectedUsersList (props) {
   const { users } = props;
   const selectedUsers = users.filter(u => u.isSelected);
 

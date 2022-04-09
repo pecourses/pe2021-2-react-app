@@ -1,6 +1,6 @@
 import UsersListItem from './UsersListItem';
 
-function UsersList({ users, setUsers }) {
+function UsersList ({ users, setUsers }) {
   const mapUser = (u, index) => {
     const selectUser = () => {
       const newUsers = [...users];
