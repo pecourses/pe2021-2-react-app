@@ -1,5 +1,5 @@
-import UsersLoader from './components/UsersLoader';
+import LoginForm from './components/LoginForm';
 
-const App = () => <UsersLoader />;
+const App = () => <LoginForm />;
 
 export default App;
