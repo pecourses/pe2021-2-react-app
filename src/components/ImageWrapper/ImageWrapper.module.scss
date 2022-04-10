@@ -1,0 +1,9 @@
+.wrapper {
+  width: 300px;
+  height: 300px;
+  > img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+  }
+}
