@@ -1,13 +1,15 @@
-import { Component, createContext } from 'react';
-
-const ValueContext = createContext();
+import { Component } from 'react';
+import { ValueContext } from './contexts';
 
 function ChildChildPage (props) {
   return (
-    <ValueContext.Consumer>{value => <div>{value}</div>}</ValueContext.Consumer>
+    <ValueContext.Consumer>
+      {step => {
+        return <div>{step}</div>;
+      }}
+    </ValueContext.Consumer>
   );
 }
-
 function ChildPage (props) {
   return <ChildChildPage />;
 }
@@ -21,6 +23,7 @@ class App extends Component {
     };
   }
 
+  // Обязательное имя пропа в Provider: value
   render () {
     const { step } = this.state;
     return (
@@ -32,3 +35,8 @@ class App extends Component {
 }
 
 export default App;
+
+// App(в state: user(src, fN, lN));
+//   UserPage;
+//     UserPageHeader(src, fN, lN);
+//     UserPaheSideBar(fN);
