@@ -1,41 +1,29 @@
-import { Component } from 'react';
+import { useState } from 'react';
 
-class Counter extends Component {
-  constructor (props) {
-    super(props);
+function Counter (props) {
+  const [count, setCount] = useState(0);
+  const [step, setStep] = useState(1);
 
-    this.state = {
-      count: 0,
-      step: 1,
-    };
-  }
-
-  decrement = e => {
-    const { count, step } = this.state;
-    this.setState({ count: count - step });
+  const decrement = e => {
+    setCount(count => count - step);
   };
 
-  increment = e => {
-    const { count, step } = this.state;
-    this.setState({ count: count + step });
+  const increment = e => {
+    setCount(count => count + step);
   };
 
-  render () {
-    const { count, step } = this.state;
-
-    return (
-      <>
-        <div>{count}</div>
-        <input
-          type='number'
-          value={step}
-          onChange={e => this.setState({ step: Number(e.target.value) })}
-        />
-        <button onClick={this.decrement}>-</button>
-        <button onClick={this.increment}>+</button>
-      </>
-    );
-  }
+  return (
+    <>
+      <div>{count}</div>
+      <input
+        type='number'
+        value={step}
+        onChange={e => setStep(Number(e.target.value))}
+      />
+      <button onClick={decrement}>-</button>
+      <button onClick={increment}>+</button>
+    </>
+  );
 }
 
 export default Counter;

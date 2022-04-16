@@ -21,7 +21,10 @@ function ClickerCounter () {
       onClick={clickHandler}
       onMouseMove={mouseMoveHandler}
     >
-      {count}
+      <p>Count: {count}</p>
+      <p>
+        Coords: {coords.x} {coords.x}
+      </p>
     </div>
   );
 }
