@@ -1,27 +1,32 @@
-import { Component } from 'react';
-import Counter from './components/Counter';
+import { Component, createContext } from 'react';
+
+const ValueContext = createContext();
+
+function ChildChildPage (props) {
+  return (
+    <ValueContext.Consumer>{value => <div>{value}</div>}</ValueContext.Consumer>
+  );
+}
+
+function ChildPage (props) {
+  return <ChildChildPage />;
+}
 
 class App extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      step: 1,
+      step: 6,
     };
   }
 
-  handleStepChange = e => {
-    this.setState({ step: Number(e.target.value) });
-  };
-
   render () {
     const { step } = this.state;
-
     return (
-      <>
-        <input type='number' value={step} onChange={this.handleStepChange} />
-        <Counter step={step} />
-      </>
+      <ValueContext.Provider value={step}>
+        <ChildPage />
+      </ValueContext.Provider>
     );
   }
 }
