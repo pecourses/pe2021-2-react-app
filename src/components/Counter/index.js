@@ -9,6 +9,11 @@ class Counter extends Component {
     };
   }
 
+  shouldComponentUpdate (nexpProps, nextState) {
+    const { count } = this.state;
+    return count !== nextState.count;
+  }
+
   decrement = e => {
     const { count } = this.state;
     const { step } = this.props;
@@ -24,6 +29,8 @@ class Counter extends Component {
   render () {
     const { count } = this.state;
     const { step } = this.props;
+
+    console.log('render Counter');
     return (
       <>
         <div>{count}</div>
