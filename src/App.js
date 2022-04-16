@@ -1,35 +1,27 @@
 import { Component } from 'react';
-import { ValueContext } from './contexts';
-
-function ChildChildPage (props) {
-  return (
-    <ValueContext.Consumer>
-      {step => {
-        return <div>{step}</div>;
-      }}
-    </ValueContext.Consumer>
-  );
-}
-function ChildPage (props) {
-  return <ChildChildPage />;
-}
+import { UserContext } from './contexts';
+import UserPage from './pages/UserPage';
 
 class App extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      step: 6,
+      user: {
+        src: 'https://ps.w.org/simple-user-avatar/assets/icon-256x256.png',
+        fN: 'Test',
+        lN: 'Testovich',
+      },
     };
   }
 
   // Обязательное имя пропа в Provider: value
   render () {
-    const { step } = this.state;
+    const { user } = this.state;
     return (
-      <ValueContext.Provider value={step}>
-        <ChildPage />
-      </ValueContext.Provider>
+      <UserContext.Provider value={user}>
+        <UserPage />
+      </UserContext.Provider>
     );
   }
 }
