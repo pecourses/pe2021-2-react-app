@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import { PureComponent } from 'react';
 
-class Counter extends Component {
+class Counter extends PureComponent {
   constructor (props) {
     super(props);
 
@@ -9,10 +9,18 @@ class Counter extends Component {
     };
   }
 
-  shouldComponentUpdate (nexpProps, nextState) {
-    const { count } = this.state;
-    return count !== nextState.count;
-  }
+  // если возвращает true, то перерендер нужен
+  // shouldComponentUpdate (nexpProps, nextState) {
+  //   const { count } = this.state;
+  //   return count !== nextState.count;
+  // }
+
+  // PureComponent
+  // shouldComponentUpdate (nexpProps, nextState) {
+  //   const { count } = this.state;
+  //   const { step } = this.props;
+  //   return count !== nextState.count && step !== nextProps.step;
+  // }
 
   decrement = e => {
     const { count } = this.state;
