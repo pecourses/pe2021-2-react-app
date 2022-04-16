@@ -1,56 +1,29 @@
-import DataProvider from './components/DataProvider';
+import { Component } from 'react';
+import Counter from './components/Counter';
 
-const UsersLoadingList = props => {
-  const { data: users, isFetching, error } = props.usersData;
+class App extends Component {
+  constructor (props) {
+    super(props);
 
-  return (
-    <>
-      {isFetching && <div>Loading...</div>}
-      {error && <div>ERROR</div>}
-      <ul>
-        {users.map(u => (
-          <li key={u.id}>
-            <img src={u.src} />
-            {u.firstName} {u.lastName}
-          </li>
-        ))}
-      </ul>
-    </>
-  );
-};
+    this.state = {
+      step: 1,
+    };
+  }
 
-const PhonesLoadingList = props => {
-  const { data: phones, isFetching, error } = props.phones;
-  return (
-    <>
-      {isFetching && <div>Loading...</div>}
-      {error && <div>ERROR</div>}
-      <ol>
-        {phones.map(p => (
-          <li key={p.id}>
-            {p.brand} {p.model}: {p.price}
-          </li>
-        ))}
-      </ol>
-    </>
-  );
-};
+  handleStepChange = e => {
+    this.setState({ step: Number(e.target.value) });
+  };
 
-//  рендер-проп — функция, которая сообщает компоненту что необходимо рендерить
-const App = () => (
-  <>
-    {/* <DataProvider
-      fileName='./users.json'
-      render={usersData => <UsersLoadingList usersData={usersData} />}
-    /> */}
-    {/* <DataProvider fileName='./users.json'>
-      {usersData => <UsersLoadingList usersData={usersData} />}
-    </DataProvider> */}
-    <DataProvider fileName='./phones.json'>
-      {phonesData => <PhonesLoadingList phones={phonesData} />}
-    </DataProvider>
-  </>
-);
+  render () {
+    const { step } = this.state;
+
+    return (
+      <>
+        <input type='number' value={step} onChange={this.handleStepChange} />
+        <Counter step={step} />
+      </>
+    );
+  }
+}
 
 export default App;
-// function (usersData) {return <UsersLoadingList usersData={usersData} }
