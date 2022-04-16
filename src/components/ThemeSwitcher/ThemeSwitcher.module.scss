@@ -1,0 +1,31 @@
+.label {
+  position: relative;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  width: 60px;
+  border-radius: 17px;
+  padding: 4px;
+}
+.input {
+  position: absolute;
+  opacity: 0;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.ball {
+  position: absolute;
+  color: white;
+  height: 28px;
+  width: 28px;
+  transition: transform 0.2s linear;
+}
+
+.input:checked + .ball {
+  transform: translateX(26px);
+}

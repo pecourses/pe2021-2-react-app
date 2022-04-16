@@ -1,4 +1,5 @@
 import { UserContext } from '../../contexts';
+import ThemeSwitcher from '../ThemeSwitcher';
 import styles from './UserPageHeader.module.scss';
 
 function UserPageHeader (props) {
@@ -8,6 +9,7 @@ function UserPageHeader (props) {
         return (
           <>
             <header className={styles.header}>
+              <ThemeSwitcher />
               <div className={styles.userInfoContainer}>
                 <img
                   className={styles.img}

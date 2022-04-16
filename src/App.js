@@ -1,6 +1,9 @@
+import classNames from 'classnames';
 import { Component } from 'react';
-import { UserContext } from './contexts';
+import CONSTANTS from './constants';
+import { UserContext, ThemeContext } from './contexts';
 import UserPage from './pages/UserPage';
+import styles from './App.module.scss';
 
 class App extends Component {
   constructor (props) {
@@ -12,16 +15,37 @@ class App extends Component {
         fN: 'Test',
         lN: 'Testovich',
       },
+      theme: CONSTANTS.THEMES.LIGHT,
     };
   }
 
+  setTheme = () => {
+    console.log('theme', this.state.theme);
+    this.setState(({ theme }) => ({
+      theme:
+        theme === CONSTANTS.THEMES.LIGHT
+          ? CONSTANTS.THEMES.DARK
+          : CONSTANTS.THEMES.LIGHT,
+    }));
+  };
+
   // Обязательное имя пропа в Provider: value
   render () {
-    const { user } = this.state;
+    const { user, theme } = this.state;
+
+    const appClassNames = classNames({
+      [styles.light]: theme === CONSTANTS.THEMES.LIGHT,
+      [styles.dark]: theme === CONSTANTS.THEMES.DARK,
+    });
+
     return (
-      <UserContext.Provider value={user}>
-        <UserPage />
-      </UserContext.Provider>
+      <div className={appClassNames}>
+        <ThemeContext.Provider value={[theme, this.setTheme]}>
+          <UserContext.Provider value={user}>
+            <UserPage />
+          </UserContext.Provider>
+        </ThemeContext.Provider>
+      </div>
     );
   }
 }
