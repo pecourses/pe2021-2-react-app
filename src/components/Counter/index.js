@@ -15,8 +15,12 @@ class Counter extends PureComponent {
   //   return count !== nextState.count;
   // }
 
+<<<<<<< HEAD
   // PureComponent содержит в себе реализацию shouldComponentUpdate
   // Производит только поверхностное сравнение состояния и пропсов
+=======
+  // PureComponent
+>>>>>>> e2dd71d79321d223f567662edee1a526eb81648a
   // shouldComponentUpdate (nexpProps, nextState) {
   //   const { count } = this.state;
   //   const { step } = this.props;
