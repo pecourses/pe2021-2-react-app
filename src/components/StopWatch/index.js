@@ -9,7 +9,6 @@ class StopWatch extends Component {
     };
 
     this.timerId = null;
-    console.log('const');
   }
 
   componentDidMount () {

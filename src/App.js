@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ClickerCounter from './components/ClickerCounter';
+import UsersLoader from './components/UsersLoaderH';
 
 const App = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -9,7 +9,7 @@ const App = () => {
       <button onClick={() => setIsVisible(isVisible => !isVisible)}>
         {isVisible ? 'Hide' : 'Show'}
       </button>
-      {isVisible && <ClickerCounter />}
+      {isVisible && <UsersLoader />}
     </>
   );
 };
