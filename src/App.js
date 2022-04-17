@@ -1,90 +1,19 @@
-// SPA
-// SSR / CSR
+import { Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import AboutPage from './pages/AboutPage';
+import HomePage from './pages/HomePage';
+import Layout from './pages/Layout';
+import NotFound from './pages/NotFound';
+import Partners from './pages/PartnersPage';
 
-import { useEffect } from 'react';
-import {
-  Link,
-  NavLink,
-  Outlet,
-  Route,
-  Routes,
-  useNavigate,
-} from 'react-router-dom';
+// SPA single page application
+// CSR - client-side rendering (альтернативы SSR - server-side rendering, смешанный вариант)
 
-const HomePage = () => (
-  <main>
-    <h2>HomePage</h2>
-  </main>
-);
+// 1 Link меняет location
+// 2 BrowserRouter подписан на изменения location
+// 3 BrowserRouter в Routes ищет Route с path, как в location ( т.е.как to у выбранного Link) и
+// 4 выводит компонент из пропа element
 
-const AboutPage = () => (
-  <main>
-    <h2>AboutPage</h2>
-  </main>
-);
-
-const NotFound = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    setTimeout(() => {
-      navigate('/');
-    }, 5000);
-  });
-
-  return (
-    <main>
-      <h2>The page not found</h2>
-      <Link to='/'>Home</Link>
-    </main>
-  );
-};
-
-const defineNavLinkStyle = ({ isActive }) => ({
-  color: isActive ? 'red' : 'blue',
-});
-
-const Header = () => (
-  <header>
-    <h1>Main Page</h1>
-    <nav>
-      <NavLink style={defineNavLinkStyle} to='/'>
-        Home
-      </NavLink>
-      <NavLink style={defineNavLinkStyle} to='/partners'>
-        Partners
-      </NavLink>
-      <NavLink style={defineNavLinkStyle} to='/about'>
-        About
-      </NavLink>
-    </nav>
-  </header>
-);
-
-const Layout = () => {
-  return (
-    <div>
-      <Header />
-      {/* Втраивание различающегося контента */}
-      <Outlet />
-      <footer>Footer</footer>
-    </div>
-  );
-};
-
-const Partners = () => (
-  <main>
-    <h2>Partners</h2>
-    <Link to='partner1'>Partner1</Link>
-    <Link to='partner2'>Partner2</Link>
-    <Routes>
-      <Route path='partner1' element={<div>Partner1 page</div>} />
-      <Route path='partner2' element={<div>Partner2 page</div>} />
-    </Routes>
-  </main>
-);
-
-// Add ContactsPage
 const App = () => {
   return (
     <>
@@ -99,5 +28,20 @@ const App = () => {
     </>
   );
 };
+
+// Без Outlet
+// const App = () => {
+//   return (
+//     <>
+//       <Header />
+//       <Routes>
+//         <Route path='/' element={<HomePage />} />
+//         <Route path='about' element={<AboutPage />} />
+//         <Route path='partners/*' element={<Partners />} />
+//         <Route path='*' element={<NotFound />} />
+//       </Routes>
+//     </>
+//   );
+// };
 
 export default App;
