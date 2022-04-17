@@ -1,17 +1,29 @@
-import { useState } from 'react';
-import UsersLoader from './components/UsersLoaderH';
+import { Component } from 'react';
+import { UserContext } from './contexts';
+import UserPage from './pages/UserPage';
 
-const App = () => {
-  const [isVisible, setIsVisible] = useState(true);
+class App extends Component {
+  constructor (props) {
+    super(props);
 
-  return (
-    <>
-      <button onClick={() => setIsVisible(isVisible => !isVisible)}>
-        {isVisible ? 'Hide' : 'Show'}
-      </button>
-      {isVisible && <UsersLoader />}
-    </>
-  );
-};
+    this.state = {
+      user: {
+        src: 'https://ps.w.org/simple-user-avatar/assets/icon-256x256.png',
+        fN: 'Test',
+        lN: 'Testovich',
+      },
+    };
+  }
+
+  // Обязательное имя пропа в Provider: value
+  render () {
+    const { user } = this.state;
+    return (
+      <UserContext.Provider value={user}>
+        <UserPage />
+      </UserContext.Provider>
+    );
+  }
+}
 
 export default App;
