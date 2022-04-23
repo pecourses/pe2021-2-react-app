@@ -6,7 +6,7 @@ import Layout from './pages/Layout';
 import NotFound from './pages/NotFound';
 import Partners from './pages/PartnersPage';
 
-// SPA single page application
+// SPA - single page application
 // CSR - client-side rendering (альтернативы SSR - server-side rendering, смешанный вариант)
 
 // 1 Link меняет location
@@ -21,7 +21,7 @@ const App = () => {
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path='about' element={<AboutPage />} />
-          <Route path='partners/*' element={<Partners />} />
+          <Route path='partners' element={<Partners />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>

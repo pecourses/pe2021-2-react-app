@@ -6,12 +6,12 @@ function UserPageSideBar (props) {
   return <div>Hello, {user.fN}</div>;
 }
 
-// function UserPageSideBar (props) {
-//   return (
-//     <UserContext.Consumer>
-//       {user => <div>Hello, {user.fN}</div>}
-//     </UserContext.Consumer>
-//   );
-// }
+function UserPageSideBar (props) {
+  return (
+    <UserContext.Consumer>
+      {user => <div>Hello, {user.fN}</div>}
+    </UserContext.Consumer>
+  );
+}
 
 export default UserPageSideBar;
