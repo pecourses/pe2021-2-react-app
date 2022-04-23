@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { UserContext } from '../../contexts';
-import ThemeSwitcher from '../ThemeSwitcher';
+// import ThemeSwitcher from '../ThemeSwitcher';
 import styles from './UserPageHeader.module.scss';
 
 // function UserPageHeader (props) {
