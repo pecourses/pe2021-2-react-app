@@ -1,17 +1,8 @@
-import { useContext } from 'react';
-import { UserContext } from '../../contexts';
+import { withUser } from '../HOCs';
 
 function UserPageSideBar (props) {
-  const user = useContext(UserContext);
+  const { user } = props;
   return <div>Hello, {user.fN}</div>;
 }
 
-// function UserPageSideBar (props) {
-//   return (
-//     <UserContext.Consumer>
-//       {user => <div>Hello, {user.fN}</div>}
-//     </UserContext.Consumer>
-//   );
-// }
-
-export default UserPageSideBar;
+export default withUser(UserPageSideBar);

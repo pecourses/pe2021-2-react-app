@@ -1,47 +1,20 @@
-import { Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import AboutPage from './pages/AboutPage';
-import HomePage from './pages/HomePage';
-import Layout from './pages/Layout';
-import NotFound from './pages/NotFound';
-import Partners from './pages/PartnersPage';
-
-// SPA single page application
-// CSR - client-side rendering (альтернативы SSR - server-side rendering, смешанный вариант)
-
-// 1 Link меняет location
-// 2 BrowserRouter подписан на изменения location
-// 3 BrowserRouter в Routes ищет Route с path, как в location ( т.е.как to у выбранного Link) и
-// 4 выводит компонент из пропа element
+import { useState } from 'react';
+import { UserContext } from './contexts';
+import UserPage from './pages/UserPage';
 
 const App = () => {
+  const [user, setUser] = useState({
+    fN: 'Test',
+    lN: 'Testovich',
+    src:
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80',
+  });
+
   return (
-    <>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path='about' element={<AboutPage />} />
-          <Route path='partners/*' element={<Partners />} />
-          <Route path='*' element={<NotFound />} />
-        </Route>
-      </Routes>
-    </>
+    <UserContext.Provider value={user}>
+      <UserPage />
+    </UserContext.Provider>
   );
 };
-
-// Без Outlet
-// const App = () => {
-//   return (
-//     <>
-//       <Header />
-//       <Routes>
-//         <Route path='/' element={<HomePage />} />
-//         <Route path='about' element={<AboutPage />} />
-//         <Route path='partners/*' element={<Partners />} />
-//         <Route path='*' element={<NotFound />} />
-//       </Routes>
-//     </>
-//   );
-// };
 
 export default App;
