@@ -6,13 +6,17 @@ export const USER_SCHEMA = yup.object({
     .trim()
     .min(2)
     .max(60)
+    .matches(
+      /^[A-Z][a-z]{*}$/,
+      'First name must started with capital letter ...'
+    )
     .required(),
-  age: yup
-    .number()
-    .min(0)
-    .max(130)
-    .integer()
-    .required(),
+  // age: yup
+  //   .number()
+  //   .min(0)
+  //   .max(130)
+  //   .integer()
+  //   .required(),
 });
 
 // const user = { firstName: 'Test', age: 65 };

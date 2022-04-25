@@ -1,4 +1,4 @@
-import { Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { USER_SCHEMA } from '../../utils/validationSchemas';
 
 function UserInfoForm () {
@@ -12,28 +12,28 @@ function UserInfoForm () {
 
   // обязательные пропы Formik - initialValues, onSubmit
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validationSchema={USER_SCHEMA}
+    >
       {formikProps => {
         console.log('formikProps', formikProps);
 
         return (
           <>
-            {/* <form onSubmit={formikProps.handleSubmit}></form> */}
             <Form>
-              {/* <input
-                type='text'
-                name='firstName'
-                placeholder='Firstname'
-                value={formikProps.values.firstName}
-                onChange={formikProps.handleChange}
-                autoFocus
-              /> */}
               <Field
                 type='text'
                 name='firstName'
                 placeholder='Firstname'
                 autoFocus
               />
+              {/* {formikProps.errors.firstName &&
+                formikProps.touched.firstName && (
+                  <span>{formikProps.errors.firstName}</span>
+                )} */}
+              <ErrorMessage name='firstName' />
               <button type='submit'>Save</button>
             </Form>
           </>
