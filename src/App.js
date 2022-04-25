@@ -1,5 +1,5 @@
-import UserInfoForm from './components/UserInfoForm';
+import UserPage from './pages/UserPage/index';
 
-const App = () => <UserInfoForm />;
+const App = () => <UserPage />;
 
 export default App;
