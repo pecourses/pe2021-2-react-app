@@ -1,7 +1,7 @@
-import CounterWithReducer from './components/CounterWithReducer';
+import TodoPage from './pages/TodoPage';
 
 function App (props) {
-  return <CounterWithReducer />;
+  return <TodoPage />;
 }
 
 export default App;
