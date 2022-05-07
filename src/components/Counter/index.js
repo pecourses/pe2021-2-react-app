@@ -9,30 +9,26 @@ class Counter extends PureComponent {
     };
   }
 
-  // если возвращает true, то перерендер нужен
-  // shouldComponentUpdate (nexpProps, nextState) {
-  //   const { count } = this.state;
-  //   return count !== nextState.count;
-  // }
-
-  // PureComponent содержит в себе реализацию shouldComponentUpdate
-  // Производит только поверхностное сравнение состояния и пропсов
-  // shouldComponentUpdate (nexpProps, nextState) {
+  // decrement = e => {
   //   const { count } = this.state;
   //   const { step } = this.props;
-  //   return count !== nextState.count && step !== nextProps.step;
-  // }
+  //   this.setState({ count: count - step });
+  // };
 
-  decrement = e => {
+  // increment = e => {
+  //   const { count } = this.state;
+  //   const { step } = this.props;
+  //   this.setState({ count: count + step });
+  // };
+
+  setCount = op => {
     const { count } = this.state;
     const { step } = this.props;
-    this.setState({ count: count - step });
-  };
-
-  increment = e => {
-    const { count } = this.state;
-    const { step } = this.props;
-    this.setState({ count: count + step });
+    return e => {
+      op === '-'
+        ? this.setState({ count: count - step })
+        : this.setState({ count: count + step });
+    };
   };
 
   render () {
@@ -43,8 +39,8 @@ class Counter extends PureComponent {
     return (
       <>
         <div>{count}</div>
-        <button onClick={this.decrement}>-</button>
-        <button onClick={this.increment}>+</button>
+        <button onClick={this.setCount('-')}>-</button>
+        <button onClick={this.setCount('+')}>+</button>
       </>
     );
   }

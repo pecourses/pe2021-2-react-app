@@ -1,7 +1,7 @@
-import TodoPage from './pages/TodoPage';
+import Counter from './components/Counter/index';
 
 function App (props) {
-  return <TodoPage />;
+  return <Counter step={10} />;
 }
 
 export default App;
